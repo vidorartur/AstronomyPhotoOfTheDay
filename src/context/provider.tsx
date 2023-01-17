@@ -1,15 +1,10 @@
-import { Nasa } from "@/class/Nasa";
 import { ReactNode, useMemo, useState } from "react";
-import context from "./context";
+import context, {defaultStateValue} from "./context";
 
 export function Provider({children}: {children: ReactNode}){
-  const [nasaImage , setNasaImage]= useState<Nasa>();
-  const contextValue = useMemo(() => {
-  const objSate = {nasaImage , setNasaImage}
-  return objSate
-  }, [nasaImage , setNasaImage])
+  const [nasaImage , setNasaImage]= useState(defaultStateValue);
   return (
-    <context.Provider value={contextValue}>
+    <context.Provider value={{nasaImage, setNasaImage}}>
       {children}
     </context.Provider>
   );

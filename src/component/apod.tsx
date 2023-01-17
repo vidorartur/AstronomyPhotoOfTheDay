@@ -2,15 +2,17 @@ import Context from "@/context/context";
 import { useContext, useEffect } from "react";
 
 export function Apod(): JSX.Element  {
-  const {setNasaImage, nasaImage} = useContext(Context);
+  const {setNasaImage} = useContext(Context);
+  const {nasaImage} = useContext(Context)
+
   async function fetchNASA(): Promise<void> {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=6vxLNvZVGzUTnl4qhSFuAjaHeT7S66gkr0fzZfbb';
     const fetchData = await fetch(url);
     const response = await fetchData.json();
     setNasaImage(response);
   }
-    useEffect(() => { fetchNASA(); });
 
+  useEffect(() => { fetchNASA(); });
 
     if (typeof nasaImage !== 'undefined') {
       return (
@@ -28,5 +30,7 @@ export function Apod(): JSX.Element  {
         </div>
       )
     }
+
     return (<div className="loading">Loading...</div>)
+
 }
