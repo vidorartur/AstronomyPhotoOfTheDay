@@ -9,15 +9,13 @@ export function Apod(): JSX.Element  {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=6vxLNvZVGzUTnl4qhSFuAjaHeT7S66gkr0fzZfbb';
     const fetchData = await fetch(url);
     const response = await fetchData.json();
-    console.log(response);
-    
     setNasaImage(response);
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchNASA(); }, []);
 
-    if (typeof nasaImage !== 'undefined') {
+    if (nasaImage.title !== '') {
       return (
         <div className="container">
           <h1 className="title">{nasaImage.title}</h1>

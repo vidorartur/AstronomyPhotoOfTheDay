@@ -1,7 +1,7 @@
-import { Apod } from "@/component/apod"
+import { Apod } from "@/components/Apod"
 import { Provider } from "@/context/provider"
 
-export default function Home(){
+export default function Home() {
   return (
     <div className="App">
       <header>
